@@ -37,6 +37,9 @@ const App: () => React$Node = () => {
   const [winner, setWinner] = useState(null);
   const win = checkWinner(board);
 
+  const pad = [null, null, null, null, null, null];
+  const [padding, setPadding] = useState(pad);
+
   const tileSelect = (i) => {
     console.log(winner);
     const tmpBoard = board;
@@ -84,10 +87,20 @@ const App: () => React$Node = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={styles.savContainer}>       
-        <Board tiles={board} onPress={tileSelect} />
+      <SafeAreaView style={styles.savContainer}> 
+        <View style={styles.gameView}>     
+          <View style={styles.container}>
+            <Text style={styles.text}>Tic-Tac-Toe</Text>
+          </View>
+          <Text>
+            <Text>{winner ? "Winner: " + winner : "Player Turn: " + piece}</Text>
+            </Text> 
+          <Board tiles={board} onPress={tileSelect} />
+      
+        </View>  
+     
 
-        <Text>{winner ? "Winner: " + winner : "Player Turn: " + piece}</Text>
+      
       </SafeAreaView>
     </>
   );
@@ -96,7 +109,33 @@ const App: () => React$Node = () => {
 const styles = StyleSheet.create({
   savContainer: {
     flexGrow: 1,
-    backgroundColor: '#000000',
+    backgroundColor: '#FDFEFE',
+  },
+  gameView: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+
+    flexGrow: 12,
+  },
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    backgroundColor: 'white',
+    borderWidth: 1,
+    borderColor: 'white',
+    paddingTop: '25%',
+    position: 'relative',
+    width: '50%'
+  },
+  text: {
+    color: "#1B99C0",
+    fontSize: 24,
+    fontWeight: 'bold',
   }
 });
 

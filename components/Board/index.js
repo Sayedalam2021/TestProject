@@ -22,9 +22,9 @@ const Styles = StyleSheet.create({
   },
   ticTacToeTile: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'flex-start'
+    justifyContent: 'center'
   }
 });
 
